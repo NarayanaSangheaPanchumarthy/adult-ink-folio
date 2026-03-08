@@ -47,6 +47,13 @@ const Navbar = () => {
                     <Bookmark className="w-4 h-4 mr-1" /> Saved
                   </Button>
                 </Link>
+                {isAdmin && (
+                  <Link to="/admin/verification">
+                    <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
+                      <ShieldCheck className="w-4 h-4 mr-1" /> Admin
+                    </Button>
+                  </Link>
+                )}
                 <Link to="/profile">
                   <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
                     <User className="w-4 h-4 mr-1" /> Profile

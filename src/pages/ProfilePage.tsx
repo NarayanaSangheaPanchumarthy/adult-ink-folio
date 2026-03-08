@@ -125,6 +125,36 @@ const ProfilePage = () => {
             </div>
           </div>
 
+          {/* Help & Support */}
+          <div className="bg-gradient-card rounded-xl border border-border/50 p-6 mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <HelpCircle className="w-5 h-5 text-primary" />
+              <h2 className="font-display text-lg font-semibold">Help & Support</h2>
+            </div>
+            <div className="space-y-3">
+              <Link to="/help" className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group">
+                <BookOpen className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <div>
+                  <p className="font-body text-sm font-medium">Help Center</p>
+                  <p className="font-body text-xs text-muted-foreground">Guides, FAQ, and contact support</p>
+                </div>
+              </Link>
+              <button
+                onClick={() => {
+                  const chatBtn = document.querySelector('[class*="fixed bottom-6 right-6"]') as HTMLButtonElement;
+                  chatBtn?.click();
+                }}
+                className="w-full flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group text-left"
+              >
+                <MessageCircle className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <div>
+                  <p className="font-body text-sm font-medium">AI Assistant</p>
+                  <p className="font-body text-xs text-muted-foreground">Get instant help from our AI chatbot</p>
+                </div>
+              </button>
+            </div>
+          </div>
+
           {/* Sign Out */}
           <Button variant="ghost" onClick={signOut} className="text-muted-foreground hover:text-destructive">
             <LogOut className="w-4 h-4 mr-2" /> Sign Out

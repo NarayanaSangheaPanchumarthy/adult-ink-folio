@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Menu, X, User } from "lucide-react";
+import { BookOpen, Menu, X, User, PenSquare } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
@@ -32,6 +32,11 @@ const Navbar = () => {
           {!loading && (
             user ? (
               <div className="flex items-center gap-3">
+                <Link to="/submit">
+                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+                    <PenSquare className="w-4 h-4 mr-1" /> Submit
+                  </Button>
+                </Link>
                 <Link to="/profile">
                   <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
                     <User className="w-4 h-4 mr-1" /> Profile
@@ -65,9 +70,12 @@ const Navbar = () => {
           <Link to="/subscribe" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Pricing</Link>
           {!loading && (
             user ? (
-              <Link to="/profile" onClick={() => setOpen(false)}>
-                <Button variant="gold-outline" className="w-full"><User className="w-4 h-4 mr-2" /> Profile</Button>
-              </Link>
+              <>
+                <Link to="/submit" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Submit Article</Link>
+                <Link to="/profile" onClick={() => setOpen(false)}>
+                  <Button variant="gold-outline" className="w-full"><User className="w-4 h-4 mr-2" /> Profile</Button>
+                </Link>
+              </>
             ) : (
               <div className="space-y-2">
                 <Link to="/login" onClick={() => setOpen(false)}>

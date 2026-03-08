@@ -1,40 +1,21 @@
 import { motion } from "framer-motion";
-import { Clock, User, ArrowRight } from "lucide-react";
+import { Clock, User, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
-const featured = [
-  {
-    title: "The Untold Story of Hollywood's Golden Era",
-    category: "Celebrity Bios",
-    author: "Sarah Mitchell",
-    readTime: "12 min",
-    excerpt: "A deep dive into the lives of the most iconic actors and actresses who shaped cinema history.",
-  },
-  {
-    title: "Global Markets in Flux: What's Next?",
-    category: "News",
-    author: "James Chen",
-    readTime: "8 min",
-    excerpt: "Breaking analysis of the shifting economic landscape and its impact on global readers.",
-  },
-  {
-    title: "Modern Literature's Bold New Voices",
-    category: "Books",
-    author: "Elena Rodriguez",
-    readTime: "15 min",
-    excerpt: "Exploring the emerging authors redefining contemporary adult fiction and storytelling.",
-  },
-  {
-    title: "The Science of Human Connection",
-    category: "Journals",
-    author: "Dr. Amanda Foster",
-    readTime: "20 min",
-    excerpt: "Peer-reviewed research on interpersonal relationships and emotional intelligence.",
-  },
-];
+import { useFeaturedArticles } from "@/hooks/useArticles";
 
 const FeaturedContent = () => {
+  const { data: featured, isLoading } = useFeaturedArticles();
+
+  const categoryLabels: Record<string, string> = {
+    books: "Books",
+    news: "News",
+    articles: "Articles",
+    journals: "Journals",
+    stories: "Stories",
+    celebrities: "Celebrity Bios",
+  };
+
   return (
     <section className="py-24 bg-surface-elevated">
       <div className="container mx-auto px-6">
@@ -59,10 +40,22 @@ const FeaturedContent = () => {
           </Link>
         </motion.div>
 
+        {isLoading && (
+          <div className="flex items-center justify-center py-16">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+          </div>
+        )}
+
+        {!isLoading && (!featured || featured.length === 0) && (
+          <div className="text-center py-16">
+            <p className="text-muted-foreground font-body">Featured content coming soon.</p>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {featured.map((item, i) => (
+          {featured?.map((item, i) => (
             <motion.article
-              key={i}
+              key={item.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -71,8 +64,13 @@ const FeaturedContent = () => {
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-body font-semibold tracking-wide uppercase">
-                  {item.category}
+                  {categoryLabels[item.category] || item.category}
                 </span>
+                {item.source !== "ai" && (
+                  <span className="px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground text-xs font-body capitalize">
+                    {item.source === "user" ? "Community" : item.source === "news_api" ? "Live" : item.source}
+                  </span>
+                )}
               </div>
               <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                 {item.title}
@@ -85,7 +83,7 @@ const FeaturedContent = () => {
                   <User className="w-3 h-3" /> {item.author}
                 </span>
                 <span className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" /> {item.readTime}
+                  <Clock className="w-3 h-3" /> {item.readTime || item.read_time}
                 </span>
               </div>
             </motion.article>

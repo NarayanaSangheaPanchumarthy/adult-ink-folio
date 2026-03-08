@@ -52,6 +52,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
           <AIChatWidget />
+          <AgeGate />
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>

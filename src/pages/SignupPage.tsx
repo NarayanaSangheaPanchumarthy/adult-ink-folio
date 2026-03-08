@@ -105,6 +105,23 @@ const SignupPage = () => {
           </div>
 
           <div className="space-y-2">
+            <Label htmlFor="dob" className="font-body text-sm">Date of Birth *</Label>
+            <div className="relative">
+              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Input
+                id="dob"
+                type="date"
+                value={dateOfBirth}
+                onChange={(e) => setDateOfBirth(e.target.value)}
+                required
+                max={new Date().toISOString().split("T")[0]}
+                className="pl-10 bg-secondary border-border"
+              />
+            </div>
+            <p className="font-body text-xs text-muted-foreground">You must be at least 18 years old</p>
+          </div>
+
+          <div className="space-y-2">
             <Label htmlFor="password" className="font-body text-sm">Password *</Label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />

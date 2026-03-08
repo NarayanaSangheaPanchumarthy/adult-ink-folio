@@ -126,6 +126,9 @@ const ProfilePage = () => {
             </div>
           </div>
 
+          {/* Identity Verification */}
+          <IdentityVerification />
+
           {/* Help & Support */}
           <div className="bg-gradient-card rounded-xl border border-border/50 p-6 mb-8">
             <div className="flex items-center gap-3 mb-4">

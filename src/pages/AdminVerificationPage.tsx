@@ -52,20 +52,36 @@ const AdminVerificationPage = () => {
     fetchProfiles();
   }, [filter]);
 
-  const handleAction = async (profileId: string, userId: string, action: "verified" | "rejected") => {
-    setProcessing(profileId);
+  const handleAction = async (profile: VerificationProfile, action: "verified" | "rejected") => {
+    setProcessing(profile.id);
     const { error } = await supabase
       .from("profiles")
       .update({
         verification_status: action,
         id_verified: action === "verified",
       } as any)
-      .eq("id", profileId);
+      .eq("id", profile.id);
 
     if (error) {
       toast.error("Failed to update: " + error.message);
     } else {
       toast.success(`User ${action === "verified" ? "approved" : "rejected"} successfully`);
+
+      // Send notification email
+      try {
+        await supabase.functions.invoke("verification-notification", {
+          body: {
+            userId: profile.user_id,
+            status: action,
+            displayName: profile.display_name,
+            email: profile.user_id, // Will be resolved server-side if needed
+          },
+        });
+        toast.info("Notification email queued");
+      } catch (e) {
+        console.error("Failed to send notification:", e);
+      }
+
       fetchProfiles();
     }
     setProcessing(null);
@@ -203,7 +219,7 @@ const AdminVerificationPage = () => {
                           variant="gold"
                           size="sm"
                           disabled={processing === p.id}
-                          onClick={() => handleAction(p.id, p.user_id, "verified")}
+                          onClick={() => handleAction(p, "verified")}
                         >
                           <CheckCircle className="w-4 h-4 mr-1" /> Approve
                         </Button>
@@ -215,7 +231,7 @@ const AdminVerificationPage = () => {
                           size="sm"
                           className="border-destructive/50 text-destructive hover:bg-destructive/10"
                           disabled={processing === p.id}
-                          onClick={() => handleAction(p.id, p.user_id, "rejected")}
+                          onClick={() => handleAction(p, "rejected")}
                         >
                           <XCircle className="w-4 h-4 mr-1" /> Reject
                         </Button>

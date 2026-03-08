@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Menu, X, User, PenSquare } from "lucide-react";
+import { BookOpen, Menu, X, User, PenSquare, Bookmark } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
@@ -35,6 +35,11 @@ const Navbar = () => {
                 <Link to="/submit">
                   <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
                     <PenSquare className="w-4 h-4 mr-1" /> Submit
+                  </Button>
+                </Link>
+                <Link to="/bookmarks">
+                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+                    <Bookmark className="w-4 h-4 mr-1" /> Saved
                   </Button>
                 </Link>
                 <Link to="/profile">
@@ -72,6 +77,7 @@ const Navbar = () => {
             user ? (
               <>
                 <Link to="/submit" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Submit Article</Link>
+                <Link to="/bookmarks" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">My Bookmarks</Link>
                 <Link to="/profile" onClick={() => setOpen(false)}>
                   <Button variant="gold-outline" className="w-full"><User className="w-4 h-4 mr-2" /> Profile</Button>
                 </Link>

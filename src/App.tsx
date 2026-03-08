@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import AIChatWidget from "@/components/AIChatWidget";
 import Index from "./pages/Index";
 import CategoriesPage from "./pages/CategoriesPage";
 import CategoryPage from "./pages/CategoryPage";
@@ -12,6 +13,7 @@ import ArticlePage from "./pages/ArticlePage";
 import SubscribePage from "./pages/SubscribePage";
 import BookmarksPage from "./pages/BookmarksPage";
 import SearchPage from "./pages/SearchPage";
+import HelpCenterPage from "./pages/HelpCenterPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
@@ -37,6 +39,7 @@ const App = () => (
             <Route path="/category/:slug" element={<CategoryPage />} />
             <Route path="/article/:id" element={<ArticlePage />} />
             <Route path="/subscribe" element={<SubscribePage />} />
+            <Route path="/help" element={<HelpCenterPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
@@ -47,6 +50,7 @@ const App = () => (
             <Route path="/admin/seed" element={<AdminSeedPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <AIChatWidget />
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>

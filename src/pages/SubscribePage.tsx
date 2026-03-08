@@ -1,18 +1,12 @@
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import CategoryGrid from "@/components/CategoryGrid";
-import FeaturedContent from "@/components/FeaturedContent";
 import PricingSection from "@/components/PricingSection";
 import Footer from "@/components/Footer";
 
-const Index = () => {
+const SubscribePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-16">
-        <HeroSection />
-        <CategoryGrid />
-        <FeaturedContent />
         <PricingSection />
       </main>
       <Footer />
@@ -20,4 +14,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default SubscribePage;

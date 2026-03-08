@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import IdentityVerification from "@/components/IdentityVerification";
 import { User, Crown, BookOpen, Settings, LogOut, HelpCircle, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
@@ -124,6 +125,9 @@ const ProfilePage = () => {
               </Button>
             </div>
           </div>
+
+          {/* Identity Verification */}
+          <IdentityVerification />
 
           {/* Help & Support */}
           <div className="bg-gradient-card rounded-xl border border-border/50 p-6 mb-8">

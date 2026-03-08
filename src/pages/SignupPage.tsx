@@ -5,7 +5,7 @@ import { lovable } from "@/integrations/lovable/index";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { BookOpen, Mail, Lock, User } from "lucide-react";
+import { BookOpen, Mail, Lock, User, Calendar } from "lucide-react";
 import { toast } from "sonner";
 
 const SignupPage = () => {
@@ -13,6 +13,7 @@ const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSignup = async (e: React.FormEvent) => {
@@ -25,13 +26,25 @@ const SignupPage = () => {
       toast.error("Password must be at least 6 characters");
       return;
     }
+    if (!dateOfBirth) {
+      toast.error("Please enter your date of birth");
+      return;
+    }
+    const dob = new Date(dateOfBirth);
+    const today = new Date();
+    const age = today.getFullYear() - dob.getFullYear() - 
+      (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate()) ? 1 : 0);
+    if (age < 18) {
+      toast.error("You must be at least 18 years old to sign up");
+      return;
+    }
 
     setLoading(true);
     const { error } = await supabase.auth.signUp({
       email: email.trim(),
       password,
       options: {
-        data: { display_name: displayName.trim() || undefined },
+        data: { display_name: displayName.trim() || undefined, date_of_birth: dateOfBirth },
         emailRedirectTo: window.location.origin,
       },
     });
@@ -89,6 +102,23 @@ const SignupPage = () => {
                 className="pl-10 bg-secondary border-border"
               />
             </div>
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="dob" className="font-body text-sm">Date of Birth *</Label>
+            <div className="relative">
+              <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Input
+                id="dob"
+                type="date"
+                value={dateOfBirth}
+                onChange={(e) => setDateOfBirth(e.target.value)}
+                required
+                max={new Date().toISOString().split("T")[0]}
+                className="pl-10 bg-secondary border-border"
+              />
+            </div>
+            <p className="font-body text-xs text-muted-foreground">You must be at least 18 years old</p>
           </div>
 
           <div className="space-y-2">

@@ -70,9 +70,12 @@ const Navbar = () => {
           <Link to="/subscribe" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Pricing</Link>
           {!loading && (
             user ? (
-              <Link to="/profile" onClick={() => setOpen(false)}>
-                <Button variant="gold-outline" className="w-full"><User className="w-4 h-4 mr-2" /> Profile</Button>
-              </Link>
+              <>
+                <Link to="/submit" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Submit Article</Link>
+                <Link to="/profile" onClick={() => setOpen(false)}>
+                  <Button variant="gold-outline" className="w-full"><User className="w-4 h-4 mr-2" /> Profile</Button>
+                </Link>
+              </>
             ) : (
               <div className="space-y-2">
                 <Link to="/login" onClick={() => setOpen(false)}>

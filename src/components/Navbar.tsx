@@ -37,6 +37,11 @@ const Navbar = () => {
                     <PenSquare className="w-4 h-4 mr-1" /> Submit
                   </Button>
                 </Link>
+                <Link to="/bookmarks">
+                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+                    <Bookmark className="w-4 h-4 mr-1" /> Saved
+                  </Button>
+                </Link>
                 <Link to="/profile">
                   <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
                     <User className="w-4 h-4 mr-1" /> Profile

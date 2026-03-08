@@ -41,6 +41,7 @@ const App = () => (
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
             <Route path="/submit" element={<ProtectedRoute><SubmitArticlePage /></ProtectedRoute>} />
+            <Route path="/bookmarks" element={<ProtectedRoute><BookmarksPage /></ProtectedRoute>} />
             <Route path="/admin/seed" element={<AdminSeedPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

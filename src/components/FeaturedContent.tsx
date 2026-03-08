@@ -54,39 +54,35 @@ const FeaturedContent = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featured?.map((item, i) => (
-            <motion.article
-              key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group bg-gradient-card rounded-lg border border-border/50 p-6 hover:border-primary/30 transition-all duration-300 cursor-pointer"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-body font-semibold tracking-wide uppercase">
-                  {categoryLabels[item.category] || item.category}
-                </span>
-                {item.source !== "ai" && (
-                  <span className="px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground text-xs font-body capitalize">
-                    {item.source === "user" ? "Community" : item.source === "news_api" ? "Live" : item.source}
+            <Link to={`/article/${item.id}`} key={item.id}>
+              <motion.article
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group bg-gradient-card rounded-lg border border-border/50 p-6 hover:border-primary/30 transition-all duration-300 h-full"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-body font-semibold tracking-wide uppercase">
+                    {categoryLabels[item.category] || item.category}
                   </span>
-                )}
-              </div>
-              <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                {item.title}
-              </h3>
-              <p className="font-body text-muted-foreground text-sm leading-relaxed mb-4">
-                {item.excerpt}
-              </p>
-              <div className="flex items-center gap-4 text-muted-foreground font-body text-xs">
-                <span className="flex items-center gap-1">
-                  <User className="w-3 h-3" /> {item.author}
-                </span>
-                <span className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" /> {item.read_time}
-                </span>
-              </div>
-            </motion.article>
+                </div>
+                <h3 className="font-display text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                  {item.title}
+                </h3>
+                <p className="font-body text-muted-foreground text-sm leading-relaxed mb-4">
+                  {item.excerpt}
+                </p>
+                <div className="flex items-center gap-4 text-muted-foreground font-body text-xs">
+                  <span className="flex items-center gap-1">
+                    <User className="w-3 h-3" /> {item.author}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-3 h-3" /> {item.read_time}
+                  </span>
+                </div>
+              </motion.article>
+            </Link>
           ))}
         </div>
       </div>

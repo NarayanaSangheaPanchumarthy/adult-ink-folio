@@ -26,6 +26,18 @@ const SignupPage = () => {
       toast.error("Password must be at least 6 characters");
       return;
     }
+    if (!dateOfBirth) {
+      toast.error("Please enter your date of birth");
+      return;
+    }
+    const dob = new Date(dateOfBirth);
+    const today = new Date();
+    const age = today.getFullYear() - dob.getFullYear() - 
+      (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate()) ? 1 : 0);
+    if (age < 18) {
+      toast.error("You must be at least 18 years old to sign up");
+      return;
+    }
 
     setLoading(true);
     const { error } = await supabase.auth.signUp({

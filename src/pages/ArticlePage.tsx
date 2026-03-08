@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import StarRating from "@/components/StarRating";
 import BookmarkButton from "@/components/BookmarkButton";
 import CommentsSection from "@/components/CommentsSection";
+import ReadingProgressBar from "@/components/ReadingProgressBar";
 import type { Article } from "@/hooks/useArticles";
 
 const ArticlePage = () => {
@@ -56,6 +57,7 @@ const ArticlePage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ReadingProgressBar />
       <Navbar />
       <main className="pt-24 pb-16">
         <article className="container mx-auto px-6 max-w-3xl">

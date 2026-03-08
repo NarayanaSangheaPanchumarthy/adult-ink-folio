@@ -29,6 +29,9 @@ const Navbar = () => {
           <Link to="/subscribe" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
             Pricing
           </Link>
+          <Link to="/search" className="text-muted-foreground hover:text-primary transition-colors">
+            <Search className="w-4 h-4" />
+          </Link>
           {!loading && (
             user ? (
               <div className="flex items-center gap-3">

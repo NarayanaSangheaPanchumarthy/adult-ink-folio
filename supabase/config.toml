@@ -5,3 +5,9 @@ verify_jwt = false
 
 [functions.submit-article]
 verify_jwt = false
+
+[functions.ai-chat]
+verify_jwt = false
+
+[functions.contact-support]
+verify_jwt = false

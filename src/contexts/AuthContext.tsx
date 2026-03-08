@@ -12,6 +12,10 @@ type Profile = {
   subscription_plan: string | null;
   subscription_expires_at: string | null;
   reading_preferences: string[] | null;
+  date_of_birth: string | null;
+  id_verified: boolean;
+  id_document_url: string | null;
+  verification_status: string;
 };
 
 type AuthContextType = {

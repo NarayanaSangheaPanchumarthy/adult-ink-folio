@@ -147,40 +147,52 @@ export type Database = {
           avatar_url: string | null
           bio: string | null
           created_at: string
+          date_of_birth: string | null
           display_name: string | null
           id: string
+          id_document_url: string | null
+          id_verified: boolean
           reading_preferences: string[] | null
           subscription_expires_at: string | null
           subscription_plan: string | null
           subscription_status: string
           updated_at: string
           user_id: string
+          verification_status: string
         }
         Insert: {
           avatar_url?: string | null
           bio?: string | null
           created_at?: string
+          date_of_birth?: string | null
           display_name?: string | null
           id?: string
+          id_document_url?: string | null
+          id_verified?: boolean
           reading_preferences?: string[] | null
           subscription_expires_at?: string | null
           subscription_plan?: string | null
           subscription_status?: string
           updated_at?: string
           user_id: string
+          verification_status?: string
         }
         Update: {
           avatar_url?: string | null
           bio?: string | null
           created_at?: string
+          date_of_birth?: string | null
           display_name?: string | null
           id?: string
+          id_document_url?: string | null
+          id_verified?: boolean
           reading_preferences?: string[] | null
           subscription_expires_at?: string | null
           subscription_plan?: string | null
           subscription_status?: string
           updated_at?: string
           user_id?: string
+          verification_status?: string
         }
         Relationships: []
       }

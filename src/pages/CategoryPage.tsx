@@ -56,36 +56,36 @@ const CategoryPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {articles?.map((item, i) => (
-                <motion.article
-                  key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
-                  className="group bg-gradient-card rounded-lg border border-border/50 p-6 hover:border-primary/30 transition-all duration-300"
-                >
-                  {item.source !== "ai" && (
-                    <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-body font-semibold mb-3 capitalize">
-                      {item.source === "user" ? "Community" : item.source === "news_api" ? "Live" : item.source}
-                    </span>
-                  )}
-                  <h3 className="font-display text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
-                    {item.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3 text-muted-foreground font-body text-xs">
-                      <span className="flex items-center gap-1">
-                        <User className="w-3 h-3" /> {item.author}
+                <Link to={`/article/${item.id}`} key={item.id}>
+                  <motion.article
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.08 }}
+                    className="group bg-gradient-card rounded-lg border border-border/50 p-6 hover:border-primary/30 transition-all duration-300 h-full"
+                  >
+                    {item.source !== "ai" && (
+                      <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-body font-semibold mb-3 capitalize">
+                        {item.source === "user" ? "Community" : item.source === "news_api" ? "Live" : item.source}
                       </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" /> {item.read_time}
-                      </span>
+                    )}
+                    <h3 className="font-display text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="font-body text-sm text-muted-foreground leading-relaxed mb-4">
+                      {item.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3 text-muted-foreground font-body text-xs">
+                        <span className="flex items-center gap-1">
+                          <User className="w-3 h-3" /> {item.author}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" /> {item.read_time}
+                        </span>
+                      </div>
                     </div>
-                    <Lock className="w-4 h-4 text-primary/50" />
-                  </div>
-                </motion.article>
+                  </motion.article>
+                </Link>
               ))}
             </div>
 

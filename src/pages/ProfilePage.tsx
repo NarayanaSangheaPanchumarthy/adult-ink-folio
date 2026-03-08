@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { User, Crown, BookOpen, Settings, LogOut } from "lucide-react";
+import { User, Crown, BookOpen, Settings, LogOut, HelpCircle, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 

@@ -32,6 +32,11 @@ const Navbar = () => {
           {!loading && (
             user ? (
               <div className="flex items-center gap-3">
+                <Link to="/submit">
+                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
+                    <PenSquare className="w-4 h-4 mr-1" /> Submit
+                  </Button>
+                </Link>
                 <Link to="/profile">
                   <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
                     <User className="w-4 h-4 mr-1" /> Profile

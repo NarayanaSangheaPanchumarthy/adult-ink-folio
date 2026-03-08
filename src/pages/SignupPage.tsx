@@ -5,7 +5,7 @@ import { lovable } from "@/integrations/lovable/index";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { BookOpen, Mail, Lock, User } from "lucide-react";
+import { BookOpen, Mail, Lock, User, Calendar } from "lucide-react";
 import { toast } from "sonner";
 
 const SignupPage = () => {

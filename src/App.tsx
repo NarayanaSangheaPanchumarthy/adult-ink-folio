@@ -51,6 +51,7 @@ const App = () => (
             <Route path="/submit" element={<ProtectedRoute><SubmitArticlePage /></ProtectedRoute>} />
             <Route path="/bookmarks" element={<ProtectedRoute><BookmarksPage /></ProtectedRoute>} />
             <Route path="/admin/seed" element={<AdminSeedPage />} />
+            <Route path="/admin/verification" element={<AdminRoute><AdminVerificationPage /></AdminRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <AIChatWidget />

@@ -219,7 +219,7 @@ const AdminVerificationPage = () => {
                           variant="gold"
                           size="sm"
                           disabled={processing === p.id}
-                          onClick={() => handleAction(p.id, p.user_id, "verified")}
+                          onClick={() => handleAction(p, "verified")}
                         >
                           <CheckCircle className="w-4 h-4 mr-1" /> Approve
                         </Button>

@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Menu, X, User, PenSquare, Bookmark, Search } from "lucide-react";
+import { BookOpen, Menu, X, User, PenSquare, Bookmark, Search, ShieldCheck } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useIsAdmin } from "@/hooks/useIsAdmin";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const { user, loading } = useAuth();
+  const { isAdmin } = useIsAdmin();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
@@ -45,6 +47,13 @@ const Navbar = () => {
                     <Bookmark className="w-4 h-4 mr-1" /> Saved
                   </Button>
                 </Link>
+                {isAdmin && (
+                  <Link to="/admin/verification">
+                    <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
+                      <ShieldCheck className="w-4 h-4 mr-1" /> Admin
+                    </Button>
+                  </Link>
+                )}
                 <Link to="/profile">
                   <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-primary">
                     <User className="w-4 h-4 mr-1" /> Profile
@@ -82,6 +91,11 @@ const Navbar = () => {
               <>
                 <Link to="/submit" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Submit Article</Link>
                 <Link to="/bookmarks" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">My Bookmarks</Link>
+                {isAdmin && (
+                  <Link to="/admin/verification" onClick={() => setOpen(false)} className="block font-body text-primary hover:text-primary/80">
+                    <span className="flex items-center gap-1"><ShieldCheck className="w-4 h-4" /> Admin Panel</span>
+                  </Link>
+                )}
                 <Link to="/profile" onClick={() => setOpen(false)}>
                   <Button variant="gold-outline" className="w-full"><User className="w-4 h-4 mr-2" /> Profile</Button>
                 </Link>

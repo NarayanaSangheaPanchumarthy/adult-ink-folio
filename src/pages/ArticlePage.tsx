@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import StarRating from "@/components/StarRating";
 import BookmarkButton from "@/components/BookmarkButton";
 import CommentsSection from "@/components/CommentsSection";
+import ReadingProgressBar from "@/components/ReadingProgressBar";
 import type { Article } from "@/hooks/useArticles";
 
 const ArticlePage = () => {

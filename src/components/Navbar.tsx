@@ -91,6 +91,11 @@ const Navbar = () => {
               <>
                 <Link to="/submit" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Submit Article</Link>
                 <Link to="/bookmarks" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">My Bookmarks</Link>
+                {isAdmin && (
+                  <Link to="/admin/verification" onClick={() => setOpen(false)} className="block font-body text-primary hover:text-primary/80">
+                    <span className="flex items-center gap-1"><ShieldCheck className="w-4 h-4" /> Admin Panel</span>
+                  </Link>
+                )}
                 <Link to="/profile" onClick={() => setOpen(false)}>
                   <Button variant="gold-outline" className="w-full"><User className="w-4 h-4 mr-2" /> Profile</Button>
                 </Link>

@@ -77,6 +77,7 @@ const Navbar = () => {
             user ? (
               <>
                 <Link to="/submit" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Submit Article</Link>
+                <Link to="/bookmarks" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">My Bookmarks</Link>
                 <Link to="/profile" onClick={() => setOpen(false)}>
                   <Button variant="gold-outline" className="w-full"><User className="w-4 h-4 mr-2" /> Profile</Button>
                 </Link>

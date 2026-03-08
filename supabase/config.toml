@@ -1,1 +1,7 @@
 project_id = "wsfjzxmuzfyxdbezgopo"
+
+[functions.generate-content]
+verify_jwt = false
+
+[functions.submit-article]
+verify_jwt = false

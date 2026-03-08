@@ -14,6 +14,8 @@ import SignupPage from "./pages/SignupPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ProfilePage from "./pages/ProfilePage";
+import SubmitArticlePage from "./pages/SubmitArticlePage";
+import AdminSeedPage from "./pages/AdminSeedPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +37,8 @@ const App = () => (
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+            <Route path="/submit" element={<ProtectedRoute><SubmitArticlePage /></ProtectedRoute>} />
+            <Route path="/admin/seed" element={<AdminSeedPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

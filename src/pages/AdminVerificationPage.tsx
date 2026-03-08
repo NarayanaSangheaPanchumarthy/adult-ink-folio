@@ -231,7 +231,7 @@ const AdminVerificationPage = () => {
                           size="sm"
                           className="border-destructive/50 text-destructive hover:bg-destructive/10"
                           disabled={processing === p.id}
-                          onClick={() => handleAction(p.id, p.user_id, "rejected")}
+                          onClick={() => handleAction(p, "rejected")}
                         >
                           <XCircle className="w-4 h-4 mr-1" /> Reject
                         </Button>

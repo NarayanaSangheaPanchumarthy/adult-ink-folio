@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Menu, X, User, PenSquare, Bookmark } from "lucide-react";
+import { BookOpen, Menu, X, User, PenSquare, Bookmark, Search } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
@@ -28,6 +28,9 @@ const Navbar = () => {
           </Link>
           <Link to="/subscribe" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors">
             Pricing
+          </Link>
+          <Link to="/search" className="text-muted-foreground hover:text-primary transition-colors">
+            <Search className="w-4 h-4" />
           </Link>
           {!loading && (
             user ? (
@@ -73,6 +76,7 @@ const Navbar = () => {
           <Link to="/categories" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Categories</Link>
           <Link to="/categories" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Featured</Link>
           <Link to="/subscribe" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Pricing</Link>
+          <Link to="/search" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Search</Link>
           {!loading && (
             user ? (
               <>

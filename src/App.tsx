@@ -23,6 +23,7 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ProfilePage from "./pages/ProfilePage";
 import SubmitArticlePage from "./pages/SubmitArticlePage";
 import AdminSeedPage from "./pages/AdminSeedPage";
+import AdminVerificationPage from "./pages/AdminVerificationPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

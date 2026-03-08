@@ -76,6 +76,7 @@ const Navbar = () => {
           <Link to="/categories" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Categories</Link>
           <Link to="/categories" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Featured</Link>
           <Link to="/subscribe" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Pricing</Link>
+          <Link to="/search" onClick={() => setOpen(false)} className="block font-body text-muted-foreground hover:text-primary">Search</Link>
           {!loading && (
             user ? (
               <>

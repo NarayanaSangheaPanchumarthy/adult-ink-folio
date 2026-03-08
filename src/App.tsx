@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import AdminRoute from "@/components/AdminRoute";
 import AIChatWidget from "@/components/AIChatWidget";
 import AgeGate from "@/components/AgeGate";
 import Index from "./pages/Index";
@@ -22,6 +23,7 @@ import ResetPasswordPage from "./pages/ResetPasswordPage";
 import ProfilePage from "./pages/ProfilePage";
 import SubmitArticlePage from "./pages/SubmitArticlePage";
 import AdminSeedPage from "./pages/AdminSeedPage";
+import AdminVerificationPage from "./pages/AdminVerificationPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,6 +51,7 @@ const App = () => (
             <Route path="/submit" element={<ProtectedRoute><SubmitArticlePage /></ProtectedRoute>} />
             <Route path="/bookmarks" element={<ProtectedRoute><BookmarksPage /></ProtectedRoute>} />
             <Route path="/admin/seed" element={<AdminSeedPage />} />
+            <Route path="/admin/verification" element={<AdminRoute><AdminVerificationPage /></AdminRoute>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <AIChatWidget />

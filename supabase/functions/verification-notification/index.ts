@@ -1,4 +1,8 @@
-import { corsHeaders } from "../_shared/cors.ts";
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+};
+
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.98.0";
 
 Deno.serve(async (req) => {
@@ -18,19 +22,19 @@ Deno.serve(async (req) => {
 
     const statusMessages: Record<string, { subject: string; heading: string; body: string; color: string }> = {
       verified: {
-        subject: "✅ Your identity has been verified — LuxeRead",
+        subject: "Your identity has been verified — LuxeRead",
         heading: "Identity Verified!",
         body: "Great news! Your identity has been successfully verified. You now have full access to all premium features on LuxeRead.",
         color: "#22c55e",
       },
       rejected: {
-        subject: "⚠️ Identity verification update — LuxeRead",
+        subject: "Identity verification update — LuxeRead",
         heading: "Verification Not Approved",
         body: "Unfortunately, we were unable to verify your identity with the document you submitted. Please upload a clearer photo of a valid government-issued ID on your profile page and try again.",
         color: "#ef4444",
       },
       pending: {
-        subject: "📋 ID document received — LuxeRead",
+        subject: "ID document received — LuxeRead",
         heading: "Document Received",
         body: "We've received your identity document and it's now under review. This process typically takes 24-48 hours. We'll notify you once the review is complete.",
         color: "#eab308",
@@ -47,8 +51,7 @@ Deno.serve(async (req) => {
 
     const name = displayName || "there";
 
-    const html = `
-<!DOCTYPE html>
+    const html = `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"></head>
 <body style="margin:0;padding:0;background:#ffffff;font-family:'Helvetica Neue',Arial,sans-serif;">
@@ -68,7 +71,7 @@ Deno.serve(async (req) => {
           </a>
         </td></tr>
         <tr><td style="padding:24px 40px;text-align:center;border-top:1px solid #2a2a4a;">
-          <p style="margin:0;font-size:12px;color:#666;">© ${new Date().getFullYear()} LuxeRead. All rights reserved.</p>
+          <p style="margin:0;font-size:12px;color:#666;">&copy; ${new Date().getFullYear()} LuxeRead. All rights reserved.</p>
         </td></tr>
       </table>
     </td></tr>
@@ -76,24 +79,15 @@ Deno.serve(async (req) => {
 </body>
 </html>`;
 
-    // Use Supabase Auth admin to send email via the built-in SMTP
-    const supabaseAdmin = createClient(
-      Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
-    );
+    // Log for now - to send real emails, integrate a transactional email service
+    console.log(`Verification notification for ${email}: ${msg.subject}`);
+    console.log(`HTML length: ${html.length}`);
 
-    // For now, log the email content. In production, integrate with a transactional email service.
-    // We'll use the Supabase edge function to store notification records.
-    console.log(`Sending verification email to ${email}: ${msg.subject}`);
-
-    // Store notification in a simple approach - return success to frontend
-    // The frontend will show a toast confirming the notification was "sent"
     return new Response(
       JSON.stringify({ 
         success: true, 
-        message: `Notification email prepared for ${email}`,
+        message: `Notification prepared for ${email}`,
         subject: msg.subject,
-        // In production, connect Resend or similar service here
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );

@@ -8,6 +8,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import CategoriesPage from "./pages/CategoriesPage";
 import CategoryPage from "./pages/CategoryPage";
+import ArticlePage from "./pages/ArticlePage";
 import SubscribePage from "./pages/SubscribePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";

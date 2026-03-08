@@ -44,7 +44,7 @@ const SignupPage = () => {
       email: email.trim(),
       password,
       options: {
-        data: { display_name: displayName.trim() || undefined },
+        data: { display_name: displayName.trim() || undefined, date_of_birth: dateOfBirth },
         emailRedirectTo: window.location.origin,
       },
     });

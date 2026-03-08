@@ -83,7 +83,7 @@ const FeaturedContent = () => {
                   <User className="w-3 h-3" /> {item.author}
                 </span>
                 <span className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" /> {item.readTime || item.read_time}
+                  <Clock className="w-3 h-3" /> {item.read_time}
                 </span>
               </div>
             </motion.article>

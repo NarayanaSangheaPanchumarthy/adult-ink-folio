@@ -15,6 +15,7 @@ const Index = () => {
         <CategoryGrid />
         <FeaturedContent />
         <PricingSection />
+        <FAQSection />
       </main>
       <Footer />
     </div>

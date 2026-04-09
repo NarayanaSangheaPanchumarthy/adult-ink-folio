@@ -19,6 +19,7 @@ const Index = () => {
         <FAQSection />
       </main>
       <Footer />
+      <BackToTopButton />
     </div>
   );
 };

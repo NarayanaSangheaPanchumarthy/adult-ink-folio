@@ -5,6 +5,7 @@ import FeaturedContent from "@/components/FeaturedContent";
 import PricingSection from "@/components/PricingSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
+import BackToTopButton from "@/components/BackToTopButton";
 
 const Index = () => {
   return (

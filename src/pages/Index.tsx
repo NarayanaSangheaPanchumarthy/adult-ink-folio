@@ -1,7 +1,9 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import TrustRow from "@/components/TrustRow";
 import CategoryGrid from "@/components/CategoryGrid";
 import FeaturedContent from "@/components/FeaturedContent";
+import Testimonials from "@/components/Testimonials";
 import PricingSection from "@/components/PricingSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
@@ -13,8 +15,10 @@ const Index = () => {
       <Navbar />
       <main className="pt-16">
         <HeroSection />
+        <TrustRow />
         <CategoryGrid />
         <FeaturedContent />
+        <Testimonials />
         <PricingSection />
         <FAQSection />
       </main>

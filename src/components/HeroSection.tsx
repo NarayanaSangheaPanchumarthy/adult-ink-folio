@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[92vh] flex items-center overflow-hidden grain">
+    <section className="relative min-h-[78vh] flex items-center overflow-hidden grain">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
@@ -25,7 +25,7 @@ const HeroSection = () => {
       {/* Faint vertical rule */}
       <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border/40 to-transparent" />
 
-      <div className="relative z-10 container mx-auto px-6 py-24 grid lg:grid-cols-12 gap-12 items-center">
+      <div className="relative z-10 container mx-auto px-6 py-16 grid lg:grid-cols-12 gap-12 items-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

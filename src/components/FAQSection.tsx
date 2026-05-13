@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
@@ -56,6 +58,13 @@ const FAQSection = () => {
               poster="/placeholder.svg"
             />
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+          </div>
+          <div className="flex justify-center mt-6">
+            <Link to="/subscribe">
+              <Button variant="gold" size="lg" className="font-display text-base px-10">
+                Start subscription
+              </Button>
+            </Link>
           </div>
         </motion.div>
 

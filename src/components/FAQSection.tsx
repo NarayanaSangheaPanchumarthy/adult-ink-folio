@@ -59,6 +59,13 @@ const FAQSection = () => {
             />
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/40 via-transparent to-transparent" />
           </div>
+          <div className="flex justify-center mt-6">
+            <Link to="/subscribe">
+              <Button variant="gold" size="lg" className="font-display text-base px-10">
+                Start subscription
+              </Button>
+            </Link>
+          </div>
         </motion.div>
 
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-3">

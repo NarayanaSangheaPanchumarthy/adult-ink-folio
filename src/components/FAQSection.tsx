@@ -1,9 +1,11 @@
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import videoAsset from "@/assets/luxeread-promo.mp4.asset.json";
 
 const faqs = [
   {

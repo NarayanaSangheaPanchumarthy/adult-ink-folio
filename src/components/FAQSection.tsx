@@ -1,9 +1,11 @@
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import videoAsset from "@/assets/luxeread-promo.mp4.asset.json";
 
 const faqs = [
   {
@@ -36,6 +38,27 @@ const FAQSection = () => {
   return (
     <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-6 max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-14"
+        >
+          <div className="relative rounded-2xl overflow-hidden border border-primary/20 shadow-elevated bg-gradient-card aspect-video">
+            <video
+              src={videoAsset.url}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/placeholder.svg"
+            />
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+          </div>
+        </motion.div>
+
         <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-3">
           Frequently Asked Questions
         </h2>
